@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			padding: 0;margin: 0;
+		}
+		body{
+			font:30px "Microsoft Yahei";
+			text-align: center;
+			width: 100%;
+		}
+		#hd,#ft{
+			width: 100%;min-width: 200px;
+			height: 80px;background-color: #d3d;
+			line-height: 80px;
+		}
+		#body{
+			margin: 0 220px;
+		}
+		.center{
+			width: 80%;margin: 0 auto;
+			min-width: 200px;
+		}
+		/*.clearfix::after{
+			content: '';display: block;visibility: hidden;overflow: hidden;clear: both;height: 0;
+		}*/
+		.clearfix::after{
+			content: " ";display: table;clear: both;
+		}
+		.main,.left,.right{
+			float: left;height:300px;
+		}
+		.main{
+			width: 100%;background-color: orange;
+		}
+		.left,.right{
+			width: 200px;position: relative;
+		}
+		.left{
+			background-color: yellow;
+			margin-left: -100%;
+			left:-220px;
+		}
+		.right{
+			background-color: blue;
+			margin-left: -200px;
+			right: -220px;
+		}
+	</style>
+</head>
+<body>
+	<div id="hd">head</div>
+	<div id="body" class="clearfix">
+		<div class="center">
+			<div class="main">main</div>
+			<div class="left">left</div>
+			<div class="right">right</div>
+		</div>
+	</div>
+	<div id="ft">foot</div>
+</body>
+</html>
