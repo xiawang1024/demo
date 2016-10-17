@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" data-name-Id=123 data-my-na-me="wangxia" data-num=456></div>
+<script type="text/javascript">
+ 
+var div=document.getElementById("box");
+// var data=getDataset(div);
+
+
+// function getDataset(element){
+//     if (element.dataset) {
+//         return element.dataset;
+//     }
+//     var atts=element.attributes;
+//     var result={};
+//     for(key in atts){
+//         var name,value;
+//         name=atts[key].nodeName;
+//         value=atts[key].nodeValue
+//         if(/^data-\w+/.test(name)){
+//             name=name.slice(5).replace(/-\w/g,function(s){
+//                 return s.toUpperCase();
+//             });
+//             name=name.replace(/-/g,"");
+//             result[name]=value;
+//         }
+        
+//     }
+//     return result;
+// }
+// function getComputedStyle(element){
+//     if(window.getComputedStyle){
+//         return window.getComputedStyle(element,null);
+//     }else{
+//         return element.currentStyle;
+//     }
+// }
+function getStyle(element,name){
+    if(window.getComputedStyle){
+        return window.getComputedStyle(element,null)[name];
+    }else{
+        return element.currentStyle[name];
+    }
+}
+alert(getStyle(box,""));
+</script>
+</body>
+</html>

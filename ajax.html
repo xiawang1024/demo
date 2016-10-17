@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	//get
+	function get(url,options,callback){
+		var xhr=createXHR();
+		xhr.onreadystatechange=function(){
+			if(xhr.redayState==4){
+				if((xhr.status>=200&&xhr.status<300)||xhr.status==304){
+					callback(xhr.responseText);
+				}else{
+					alert("Request was unsuccessful:"+xhr.status);
+				}
+			}
+		};
+		var url=addURLParam(url,options);
+		xhr.open("get",url,true);
+		xhr.send(null);
+		//辅助向现有url的末尾添加查询字符串
+		function addURLParam(url,options){
+			for(key in options){
+				var name=key,
+				    value=options[key];
+			url+=(url.indexOf("?")==-1 ? "?" : "&");
+			url+=encodeURIComponent(name)+"="+encodeURIComponent(value);
+			}	
+			return url;
+		}
+	}
+	//post
+	function post(url,options,callback){
+		var xhr=createXHR();
+		xhr.onreadystatechange=function(){
+			if(xhr.redayState==4){
+				if((xhr.status>=200&&xhr.status<300)||xhr.status==304){
+					callback(xhr.responseText);
+				}else{
+					alert("Request was unsuccessful:"+xhr.status);
+				}
+			}
+		};
+		//对象转post数据格式
+		function param(options){
+			var str="";
+			for(key in options){
+				var name=key,
+					value=options[key];
+				str+=encodeURIComponent(name)+"="+encodeURIComponent(value);
+				str+="&";
+			}
+			return str.slice(0,-1);
+		}
+		xhr.open("post",url,true);
+		xhr.setRequsetHeader("Content-Type","application/x-www-form-urlencoded");
+		xhr.send(param(options));	
+	}
+</script>

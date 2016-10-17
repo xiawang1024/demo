@@ -2,63 +2,72 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>缓冲运动</title>
+	<title>Document</title>
+	<script type="text/javascript" src="js/event.js"></script>
 	<style type="text/css">
-		*{padding: 0;margin: 0;}
-		div{
-			width: 200px;height: 200px;background-color: red;
-			position:absolute;left: -200px;
+	*{padding: 0;margin: 0;}
+ 		#wrap{
+ 			width: 250px;height: 200px;
+ 		}
+		#box{
+			width: 200px;height: 200px;
+			background: orange;
+			position: absolute;
+			left:-200px;
 		}
 		span{
-			display: block;width: 30px;height: 45px;
-			background-color: green;text-align: center;
-			position: absolute;right: -30px;top:77.5px;
+			width: 20px;height: 50px;
+			background: blue;
+			display: block;
+			position: relative;
+			left: 200px;
+			top:75px;
+			color: white;
 		}
 	</style>
 </head>
 <body>
-	<div id="div">
-		<span>分享</span>
-	</div>
-	<script type="text/javascript">
-		var div=document.getElementById('div');
-		div.onmouseover=function(){
-			move(this,"width",0,500);
-		};
-		div.onmouseout=function(){
-			move(this,-200);
-		};
-		var timer=null;
-		function move(obj, attr, oTar, interv, fn) {
-		// clearInterval(obj.timer);
-		var step = parseInt(interv / 16);
-		obj.timer = setInterval(function() {
-			var flag = true;
-			//获取当前值
-			var current = parseInt(getStyle(obj, attr));
-			var speed = (oTar - current) / step;
-			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
-			if (current !== oTar) {
-				flag=false;
-			} else {
-				obj.style[attr] = current + speed + 'px';
-			}
-			if(flag){
-				clearInterval(obj.timer);
-				if(fn){
-					fn();
-				}
-			}
-		}, 16);
-		
-	}
-	function getStyle(obj,attr){
-		if(obj.currentStyle){
-			return obj.currentStyle[attr];
-		}else{
-			return window.getComputedStyle(obj,null)[attr];
-		}
-}
-	</script>
+<div id="wrap">
+	<div id="box"><span>分享</span></div>
+	
+</div>
 </body>
 </html>
+<script type="text/javascript">
+  window.onload=function(){
+  	var box=document.getElementById('box');
+   	box.onmouseover=function(){
+   		startMove();
+   	}
+		box.onmouseout=function(){
+   		startMove1();
+   	}
+  }
+  var timeId=null;
+	function startMove(){
+		clearInterval(timeId);
+		timeId=setInterval(function(){
+			if(box.offsetLeft==0){clearInterval(timeId);}
+			else{
+			box.style.left=box.offsetLeft+2+"px";}
+		},7)
+	}
+		function startMove1(){
+		clearInterval(timeId);
+		timeId=setInterval(function(){
+			if(box.offsetLeft==-200){clearInterval(timeId);}
+			else{
+			box.style.left=box.offsetLeft-2+"px";}
+		},7)
+	}
+ 	// function step() {
+ 	// 	// body...
+ 	// 	var left=box.offsetWidth;
+ 	// 	box.style.width=left+1+"px";
+ 	// 	console.log(left);
+ 	// 	if(left>500){
+ 	// 		clearInterval(clid);
+ 	// 	}
+ 	// }
+ 	// var clid=setInterval(step,5);
+</script>

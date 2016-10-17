@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/event.js"></script>
+</head>
+<body>
+	<form name="myForm" method="post" action="javascript:alert('Form submitted!')">
+		<p><label>姓名:<input type="text" name="user" value="wangxia"></label></p>
+		<p><label>手机:<input type="tel" name="" value="13619840984"></label></p>
+		<p><label>邮箱:<input type="email" name="" ></label></p>
+		<fieldset>
+			<legend>尺寸</legend>
+			<label><input type="radio" name="size" value="small" >小份</label>
+			<label><input type="radio" name="size" value="mediu">中份</label>
+			<label><input type="radio" name="size" value="big">大份</label>
+		</fieldset>
+		<select name="province" >
+			<option value="北京v">北京t</option>
+			<option value="上海v">上海t</option>
+			<option value="广州v">广州t</option>
+			<option value="郑州v">郑州t</option>
+		</select>
+		<textarea name="textbox">多行文本</textarea>
+		<p><button type="submit" name="btn">提交</button>&nbsp;&nbsp;<button type="reset">重置</button><button name="show">show</button></p>
+	</form>
+</body>
+</html>
+<script type="text/javascript">
+	var form=document.forms[0];
+	// // alert(form.elements["user"]);
+	// var textbox=form.elements["textbox"];
+	// alert(textbox);
+	// // textbox.select();
+	// eventUtil.addHandler(textbox,"select",function(event){
+	// 	var e=eventUtil.getEvent(event);
+	// 	var target=eventUtil.getElement(e);
+	// 	var selectText=target.value.substring(target.selectionStart,target.selectionEnd);
+	// 	alert(selectText);
+	// });
+	// var select=form.elements["province"];
+	// // alert(select.options.label);
+	// var newOption=new Option("西平t","西平v");
+	// select.add(newOption,undefined);
+	// var show=form.elements['show'];
+	// eventUtil.addHandler(show,"click",function(event){
+	// 	var e=event||window.event;
+	// 	var target=e=eventUtil.getEvent(e);
+	// 	var message="";
+	// 	var selectOptions=getSelectedOption(select);
+	// 	for(var i=0;i<selectOptions.length;i++){
+	// 		message+="selected index:"+selectOptions[i].index+
+	// 		"\nselected text:"+selectOptions[i].text+
+	// 		"\nselected value"+selectOptions[i].value;
+	// 	}
+	// 	alert(message);
+	// });
+	
+	// function getSelectedOption(selectbox){
+	// 	var result=new Array();
+	// 	var option=null;
+	// 	for(var i=0,l=selectbox.options.length;i<l;i++){
+	// 		option=selectbox.options[i];
+	// 		if(option.selected){
+	// 			result.push(option);
+	// 		}
+	// 	}
+	// 	return result;
+	// }
+	var selectbox=form.elements['province']	;
+	selectbox.addEventListener("mouseover",function(event){
+		alert(event.bubbles);
+	})
+</script>

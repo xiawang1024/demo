@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	function getCookie(){
+		var cookie={},
+		 cok=document.cookie;
+		 if(cok===" "){return cookie;}
+		 var arr=cok.split("; ");
+		 for(var i=0,l=arr.length;i<l;i++){
+		 	var cstr=arr[i];
+		 	var name=cstr.slice(0,cstr.indexOf("="));
+		 	name=decodeURIComponent(name);
+		 	var value=cstr.slice(cstr.indexOf("="));
+		 	value=decodeURIComponent(value);
+		 	cookie[name]=value;
+		 }
+		 return cookie;
+	}
+</script>
